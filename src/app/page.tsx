@@ -1,103 +1,188 @@
-import Image from "next/image";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { AnimatedHeadline } from "@/components/site/AnimatedHeadline";
+import { UnicornEmbed } from "@/components/site/UnicornEmbed";
+import { Testimonials } from "@/components/site/Testimonials";
+import { People } from "@/components/site/People";
+import { InsightsSection } from "@/components/site/InsightsSection";
+import { ContactSection } from "@/components/site/ContactSection";
+import { TrendingUp, Shield, BadgeCheck, Leaf, Settings, Link2 } from "lucide-react";
 
 export default function Home() {
+  const getIconFor = (title: string) => {
+    switch (title) {
+      case "Enterprise Risk Management":
+        return TrendingUp;
+      case "Resilience":
+        return Shield;
+      case "Compliance":
+        return BadgeCheck;
+      case "ESG & Sustainability":
+        return Leaf;
+      case "Internal Controls":
+        return Settings;
+      case "Supply Chain and Third Party Risk":
+        return Link2;
+      default:
+        return TrendingUp;
+    }
+  };
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="relative min-h-[calc(100vh-4rem)] w-full">
+      <section className="relative flex h-[calc(100vh-4rem)] w-full overflow-hidden bg-[#000000]">
+        <div aria-hidden id="unicorn-studio-bg" className="absolute inset-0 z-0 pointer-events-none">
+          <UnicornEmbed projectId="KEQ4WL6AfSnunXLNLmc9" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <div className="flex w-full items-end">
+          <div className="relative z-10 w-full px-6 md:px-8 pb-14 md:pb-20 text-[#ffffff]">
+            <AnimatedHeadline
+              className="max-w-[16ch] text-3xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight"
+              text="Certainty in risk intelligence."
+              straplineSelector="#strapline"
+              highlightWord="intelligence."
+              highlightClassName="text-[#53b7af]"
+              showCursor
+            />
+            <p id="strapline" className="mt-6 max-w-[60ch] text-base md:text-lg text-[#ffffff]/80 opacity-0 translate-y-2 will-change-transform">
+              MERC & CO LLP is a leading risk and resilience consultancy, recognised in the industry for its depth of expertise, quality of delivery and committment to excellence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us */}
+      <section id="about" className="w-full pl-0 md:pl-8 pr-0 bg-muted/30 overflow-hidden mb-[-2px]">
+        <div className="w-full">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <div className="py-10 md:py-16 max-w-[680px] px-6 md:px-0">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">About us</h2>
+              <p className="mt-4 text-foreground/80 max-w-[75ch]">
+                Our core focus is to help our clients better manage and exploit risk.
+              </p>
+              <p className="mt-4 text-foreground/80 max-w-[75ch]">
+                We offer risk management leaders the specialised support and advice they need to help them meet the ever-growing expectations of executive teams, Boards, regulators, shareholders and other stakeholders.
+              </p>
+              <div className="mt-6">
+                <Button className="h-11 bg-[#00BAB0] hover:bg-[#00BAB0]/90 text-white" asChild>
+                  <a href="/about">Learn more</a>
+                </Button>
+              </div>
+            </div>
+            <div className="-mr-0 md:-mr-0 h-full my-[-2px] overflow-hidden flex">
+              <img
+                src="/London City.avif"
+                alt="London city skyline"
+                className="block h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services */}
+      <section id="services" className="w-full px-6 md:px-8 py-20 md:py-28 bg-[#346566] mt-[-2px]">
+        <div className="max-w-6xl">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Our services</h2>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "Enterprise Risk Management",
+              "Resilience",
+              "Compliance",
+              "ESG & Sustainability",
+              "Internal Controls",
+              "Supply Chain and Third Party Risk",
+            ].map((title, i) => {
+              const Icon = getIconFor(title);
+              return (
+                <Card key={i} className="h-full">
+                  <CardHeader>
+                    <div className="flex items-center gap-2">
+                      <Icon className="size-5 text-foreground" />
+                      <CardTitle className="text-lg">{title}</CardTitle>
+                    </div>
+                  <CardDescription>
+                    {title === "Enterprise Risk Management"
+                      ? "Practical Enterprise Risk Management solutions that link risk to strategy, leverage data and AI, and develop tools and a culture which helps our clients exploit risk, seize opportunities, and enhance resilience."
+                      : title === "Resilience"
+                      ? "We help organisations resist, adapt, and recover from disruption through organisational, operational, and business continuity solutions which are aligned with regulations and leading practice."
+                      : title === "Compliance"
+                      ? "MERC & CO designs and implements pragmatic Compliance frameworks to help our clients better manage legal and regulatory risks and ensure sustainable, long-term growth."
+                      : title === "ESG & Sustainability"
+                      ? "We help organisations meet rising stakeholder and regulatory expectations by embedding sustainable practices, managing risks, and aligning strategy and operations with long-term responsible impact."
+                      : title === "Internal Controls"
+                      ? "We design pragmatic, risk-intelligent control frameworks which strengthen governance, prevent losses, and improve efficiency, which empowers organisations to operate with confidence and agility."
+                      : title === "Supply Chain and Third Party Risk"
+                      ? "MERC & CO delivers Supply Chain and Third Party risk solutions that strengthen resilience across the extended enterprise, protect reputation, and enhance our clients' competitive advantage."
+                      : "Replace with a short preview of this service. 1–2 lines that summarise the value and outcomes clients can expect."}
+                  </CardDescription>
+                  </CardHeader>
+                  
+                  <CardFooter className="pt-4">
+                    <Button className="h-11 bg-[#00BAB0] hover:bg-[#00BAB0]/90 text-white" asChild>
+                      <a
+                        href={
+                          title === "Enterprise Risk Management"
+                            ? "/services/enterprise-risk-management"
+                            : title === "Compliance"
+                            ? "/services/compliance"
+                            : title === "ESG & Sustainability"
+                            ? "/services/esg-sustainability"
+                            : title === "Internal Controls"
+                            ? "/services/internal-controls"
+                            : title === "Supply Chain and Third Party Risk"
+                            ? "/services/supply-chain-third-party-risk"
+                            : title === "Resilience"
+                            ? "/services/resilience"
+                            : "/#services"
+                        }
+                      >
+                        Learn more
+                      </a>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <People />
+
+      <Testimonials />
+      <ContactSection theme="light" />
+      <InsightsSection />
+
+
+
+      {/* Footer */}
+      <footer id="footer" className="w-full px-6 md:px-8 py-12 bg-secondary/10">
+        <div className="max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div>
+            <div className="text-base font-semibold tracking-tight">MERC & CO</div>
+            <p className="mt-2 text-sm text-foreground/70">© {new Date().getFullYear()} MERC & CO LLP. All rights reserved.</p>
+          </div>
+          <div className="text-sm">
+            <ul className="space-y-1">
+              <li><a href="/#about" className="hover:underline">About us</a></li>
+              <li><a href="/#services" className="hover:underline">Our services</a></li>
+              <li><a href="/#people" className="hover:underline">Our people</a></li>
+              <li><a href="/#insights" className="hover:underline">Insights</a></li>
+              <li><a href="/#contact" className="hover:underline">Contact</a></li>
+              <li><a href="/privacy" className="hover:underline">Privacy</a></li>
+              <li><a href="/terms" className="hover:underline">Terms</a></li>
+            </ul>
+          </div>
+          <div className="text-sm text-foreground/70 space-y-2">
+            <div>MERC & CO LLP is a management consultancy registered in England and Wales.</div>
+            <div>Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ</div>
+          </div>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
