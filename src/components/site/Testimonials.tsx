@@ -36,7 +36,9 @@ export function Testimonials() {
         duration,
         ease: "none",
         repeat: -1,
-        onRepeat: () => gsap.set(track, { x: 0 }),
+        onRepeat: () => {
+          gsap.set(track, { x: 0 });
+        },
       });
     };
 
