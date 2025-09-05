@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       from: FROM,
       to,
       subject: `Website contact from ${name}`,
-      reply_to: email,
+      replyTo: email,
       html,
     });
 
